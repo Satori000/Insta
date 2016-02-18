@@ -32,9 +32,9 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func onTakePicture(sender: AnyObject) {
         
-        vc.sourceType = UIImagePickerControllerSourceType.Camera
+        //vc.sourceType = UIImagePickerControllerSourceType.Camera
         
-        self.presentViewController(vc, animated: true, completion: nil)
+       // self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController,
