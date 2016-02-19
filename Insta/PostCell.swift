@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class PostCell: UITableViewCell {
     
@@ -24,7 +25,7 @@ class PostCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     
-    
+    var post: PFObject?
     
     
     
@@ -40,5 +41,32 @@ class PostCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func onComment(sender: AnyObject) {
+        
+        if let object = post {
+            
+            
+            let id = object["id"] as! String
+            var query = PFQuery(className:"UserMedia")
+            query.getObjectInBackgroundWithId("id") {
+                (media: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let media = media {
+                    media["comment"] = "hey i like to comment things and here it is"
+                    media.saveInBackground()
+                }
+            }
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 
 }

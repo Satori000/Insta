@@ -16,6 +16,7 @@
 		1F9A79431C74E47200691074 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A79421C74E47200691074 /* PostCell.swift */; };
 		1F9A79451C74FE0700691074 /* PostMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A79441C74FE0700691074 /* PostMediaViewController.swift */; };
 		1F9A794A1C7521B100691074 /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A79491C7521B100691074 /* UserMedia.swift */; };
+		1F9A79511C766A4400691074 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A79501C766A4400691074 /* CommentsViewController.swift */; };
 		99AC654B560E901968487F5D /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE84B2358F65E1EBED0EF83 /* Pods_Insta.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		1F9A79421C74E47200691074 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		1F9A79441C74FE0700691074 /* PostMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMediaViewController.swift; sourceTree = "<group>"; };
 		1F9A79491C7521B100691074 /* UserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
+		1F9A79501C766A4400691074 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		DB552155F81943F8055C1B58 /* Pods-Insta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Insta/Pods-Insta.debug.xcconfig"; sourceTree = "<group>"; };
 		DBE84B2358F65E1EBED0EF83 /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1607CDCDD706E99ED3B1DFC /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		1F9A79461C74FF6300691074 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F9A79501C766A4400691074 /* CommentsViewController.swift */,
 				1F9A79441C74FE0700691074 /* PostMediaViewController.swift */,
 				1F9A79401C74E2A200691074 /* InstaFeedViewController.swift */,
 				1F9A793E1C743A4800691074 /* LoginViewController.swift */,
@@ -249,6 +252,7 @@
 			files = (
 				1F9A793F1C743A4800691074 /* LoginViewController.swift in Sources */,
 				1F9A794A1C7521B100691074 /* UserMedia.swift in Sources */,
+				1F9A79511C766A4400691074 /* CommentsViewController.swift in Sources */,
 				1F9A79411C74E2A200691074 /* InstaFeedViewController.swift in Sources */,
 				1F9A792D1C7436B300691074 /* AppDelegate.swift in Sources */,
 				1F9A79431C74E47200691074 /* PostCell.swift in Sources */,

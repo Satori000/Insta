@@ -64,9 +64,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="136"/>
+            <point key="canvasLocation" x="96" y="102"/>
         </scene>
-        <!--Item-->
+        <!--Insta Feed View Controller-->
         <scene sceneID="sBi-EU-Cl2">
             <objects>
                 <viewController storyboardIdentifier="InstaFeedViewController" id="R2f-iB-KHS" customClass="InstaFeedViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="466" id="n1O-1M-RuT" customClass="PostCell" customModule="Insta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="466"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="466"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n1O-1M-RuT" id="bnH-6R-vqW">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
@@ -96,9 +96,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ry-qL-rVc">
                                                     <rect key="frame" x="44" y="348" width="65" height="30"/>
                                                     <state key="normal" title="comment"/>
+                                                    <connections>
+                                                        <segue destination="dgF-vs-v3K" kind="push" identifier="commentSegue" id="X1g-eU-Bx8"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAQ-hH-dpg">
-                                                    <rect key="frame" x="278" y="8" width="20" height="21"/>
+                                                    <rect key="frame" x="256" y="0.0" width="64" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -127,6 +130,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndu-th-VfE">
                                                     <rect key="frame" x="38" y="367" width="34" height="30"/>
                                                     <state key="normal" title="1 like"/>
+                                                    <connections>
+                                                        <action selector="onComment:" destination="n1O-1M-RuT" eventType="touchUpInside" id="mOr-NU-txa"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tA7-lj-5NO">
                                                     <rect key="frame" x="6" y="4" width="37" height="34"/>
@@ -174,14 +180,14 @@
                             <constraint firstItem="IIk-2a-5JF" firstAttribute="top" secondItem="9Kd-9V-Zrz" secondAttribute="bottom" id="zOA-ei-8bU"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="fiF-Sc-uJS"/>
+                    <navigationItem key="navigationItem" id="Kim-Cs-mfg"/>
                     <connections>
                         <outlet property="tableView" destination="9Kd-9V-Zrz" id="hRe-QW-FIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sp2-nT-Lhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="192"/>
+            <point key="canvasLocation" x="1566" y="232"/>
         </scene>
         <!--Item-->
         <scene sceneID="Acc-kq-ecB">
@@ -250,6 +256,54 @@
             </objects>
             <point key="canvasLocation" x="783" y="-42"/>
         </scene>
+        <!--Comments-->
+        <scene sceneID="1nL-Rs-jsu">
+            <objects>
+                <viewController id="dgF-vs-v3K" customClass="CommentsViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DAC-F3-1ak"/>
+                        <viewControllerLayoutGuide type="bottom" id="XMg-Ov-esQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r4f-Ah-vIE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1o-2a-oBj">
+                                <rect key="frame" x="27" y="65" width="44" height="30"/>
+                                <state key="normal" title="Chuck"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I miss Hawaii" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yai-Zg-zBI">
+                                <rect key="frame" x="27" y="95" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fy9-ab-2rH">
+                                <rect key="frame" x="20" y="225" width="220" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKC-TG-Tkc">
+                                <rect key="frame" x="259" y="225" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="onPostComment:" destination="dgF-vs-v3K" eventType="touchUpInside" id="eS5-oY-krF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comments" id="YU5-kq-uTc"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="Yai-Zg-zBI" id="Z6r-yW-9wh"/>
+                        <outlet property="commentField" destination="Fy9-ab-2rH" id="Ehe-SI-9bY"/>
+                        <outlet property="usernameButton" destination="y1o-2a-oBj" id="Zto-ww-6cF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUd-W3-rZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2089" y="173"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rTB-Vf-Dtb">
             <objects>
@@ -260,13 +314,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="R2f-iB-KHS" kind="relationship" relationship="viewControllers" id="zqc-Ds-18Q"/>
+                        <segue destination="L4v-jm-bCB" kind="relationship" relationship="viewControllers" id="zqc-Ds-18Q"/>
                         <segue destination="lbg-JP-XCJ" kind="relationship" relationship="viewControllers" id="YxS-w7-L04"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5p-xK-rqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="504" y="192"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="my5-IV-8ou">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L4v-jm-bCB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fiF-Sc-uJS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FTb-Tc-FjS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R2f-iB-KHS" kind="relationship" relationship="rootViewController" id="MkQ-21-cKQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naJ-NL-UJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="80"/>
         </scene>
     </scenes>
 </document>

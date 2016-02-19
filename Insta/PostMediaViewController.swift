@@ -19,6 +19,11 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label.center = CGPointMake(160, 284)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = "I'am a test label"
+        self.view.addSubview(label)
         vc.delegate = self
         vc.allowsEditing = true
         self.tabBarItem.title = "Post"
@@ -32,9 +37,9 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func onTakePicture(sender: AnyObject) {
         
-        //vc.sourceType = UIImagePickerControllerSourceType.Camera
+        vc.sourceType = UIImagePickerControllerSourceType.Camera
         
-       // self.presentViewController(vc, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -51,6 +56,7 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
             
     }
     
+        
     @IBAction func onGetDict(sender: AnyObject) {
         var query = PFQuery(className: "UserMedia")
         query.getObjectInBackgroundWithId("1dHB3wo04u") {
@@ -65,10 +71,13 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
                         if let imageData = imageData {
                             let image = UIImage(data:imageData)
                             self.testImageView.image = image
+                            
+                            
                         }
                     }
                     
                 }
+                
 
                 //UserMedia.getPFFileFromImage(imageFromPicture)
                 print(pictureFile)
@@ -102,7 +111,7 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
 
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.

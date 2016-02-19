@@ -23,14 +23,24 @@ class UserMedia: NSObject {
         // Create Parse object PFObject
         let media = PFObject(className: "UserMedia")
         
+        let date = NSDate()
+        
+        
         // Add relevant fields to the object
         media["media"] = getPFFileFromImage(image) // PFFile column type
         media["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
         media["caption"] = caption
         media["likesCount"] = 0
         media["commentsCount"] = 0
-        
+        media["time"] = date
+        print(date)
         // Save object (following function will save the object in Parse asynchronously)
+        
+        let str = "Working at Parse is great!"
+        let data = str.dataUsingEncoding(NSUTF8StringEncoding)
+        let file = PFFile(name:"resume.txt", data:data!)
+        
+        
         media.saveInBackgroundWithBlock(completion)
     }
     
