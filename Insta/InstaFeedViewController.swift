@@ -169,14 +169,43 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             }
         
         }
-        var temp = cell.captionLabel
-        var constraints = [] as! [NSLayoutConstraint]
-        //
+        
+        
+        
+        
+        
+        
+        
+        //var temp = cell.captionLabel
+       // var constraints = [] as! [NSLayoutConstraint]
+       
+        
+        
+        let container = UIView()
+        container.backgroundColor = UIColor.blackColor()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        //cell.translatesAutoresizingMaskIntoConstraints = false
+        cell.addSubview(container)
+        let viewW = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 200)
+        
+        let viewH = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 21)
+        
+        let viewTrailing = NSLayoutConstraint(item: container, attribute: .Trailing, relatedBy: .Equal, toItem: container.superview, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let viewLeading = NSLayoutConstraint(item: container, attribute: .Leading, relatedBy: .Equal, toItem: container.superview, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let viewTop = NSLayoutConstraint(item: container, attribute: .Top, relatedBy: .Equal, toItem: cell.captionLabel, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
+        let viewBottom = NSLayoutConstraint(item: container, attribute: .Bottom, relatedBy: .Equal, toItem: container.superview, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
+        NSLayoutConstraint.activateConstraints([viewH,viewLeading, viewTrailing, viewTop])
+        
+
+        
+        
+        // 
         /*
-       // print(post)
         if let comments = post["comment"] as? [String] {
-            print(comments)
-            for comment in comments {
+            
+            
+            
+           /* for comment in comments {
                 let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.text = comment
@@ -202,7 +231,13 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
                 //print("after: \(temp.text)")
                 
             }
+
+        */
            
+        } else {
+            
+            
+        
         }
         
         let con2 = NSLayoutConstraint(item: temp, attribute: .Bottom, relatedBy: .Equal, toItem: temp.superview, attribute: .Bottom, multiplier: 1.0, constant: -10.0)
@@ -212,12 +247,14 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
 
         
         //
+        
         */
         
         
         
         
-       ///*
+       //
+/*
         var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "I'm a test label"
@@ -243,7 +280,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
         NSLayoutConstraint.activateConstraints([con, con1, con0, con10])
         NSLayoutConstraint.activateConstraints([con2])
-       //*/
+       //
+        */
         
         
         return cell
