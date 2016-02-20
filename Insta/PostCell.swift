@@ -25,6 +25,8 @@ class PostCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     
+    @IBOutlet weak var container: UIView!
+    
     var post: PFObject?
     
     

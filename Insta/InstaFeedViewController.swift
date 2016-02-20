@@ -28,6 +28,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
 
         
         
+        
         self.tabBarItem.title = "Feed"
         //print("hello view did load")
         let vc = UIImagePickerController()
@@ -53,7 +54,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
 
-    override func viewDidAppear(animated: Bool) {
+  /*  override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear")
         let query = PFQuery(className: "UserMedia")
@@ -74,7 +75,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             }
             
         }
-    }
+    } */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -170,7 +171,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         }
         var temp = cell.captionLabel
         var constraints = [] as! [NSLayoutConstraint]
-        ///*
+        //
+        /*
        // print(post)
         if let comments = post["comment"] as? [String] {
             print(comments)
@@ -178,7 +180,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
                 let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.text = comment
-                cell.addSubview(label)
+                cell.container.addSubview(label)
                 
                 let con = NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: temp, attribute: .Leading, multiplier: 1.0, constant: 0.0)
                 
@@ -200,15 +202,17 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
                 //print("after: \(temp.text)")
                 
             }
-            
+           
         }
+        
         let con2 = NSLayoutConstraint(item: temp, attribute: .Bottom, relatedBy: .Equal, toItem: temp.superview, attribute: .Bottom, multiplier: 1.0, constant: -10.0)
         
         NSLayoutConstraint.activateConstraints(constraints)
         NSLayoutConstraint.activateConstraints([con2])
 
         
-        // */
+        //
+        */
         
        //
 /*
