@@ -214,12 +214,14 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         //
         */
         
-       //
-/*
+        
+        
+        
+       ///*
         var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "I'm a test label"
-        cell.addSubview(label)
+        cell.container.addSubview(label)
         
        
         let con = NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: cell.captionLabel, attribute: .Leading, multiplier: 1.0, constant: 0.0)
@@ -229,7 +231,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         var label1 = UILabel(frame: CGRectMake(0, 0, 200, 21))
         label1.translatesAutoresizingMaskIntoConstraints = false
         label1.text = "I'm a test label"
-        cell.addSubview(label1)
+        cell.container.addSubview(label1)
         
         
         let con0 = NSLayoutConstraint(item: label1, attribute: .Leading, relatedBy: .Equal, toItem: label, attribute: .Leading, multiplier: 1.0, constant: 0.0)
@@ -241,8 +243,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
         NSLayoutConstraint.activateConstraints([con, con1, con0, con10])
         NSLayoutConstraint.activateConstraints([con2])
-       //
-        */
+       //*/
         
         
         return cell
