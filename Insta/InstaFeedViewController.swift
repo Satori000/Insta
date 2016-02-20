@@ -23,6 +23,11 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 500
+
+        
+        
         self.tabBarItem.title = "Feed"
         //print("hello view did load")
         let vc = UIImagePickerController()
@@ -81,12 +86,12 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let feed = feed {
-            print(self.feed!.count)
+            //print(self.feed!.count)
             
             return self.feed!.count
             
         } else {
-            print("0")
+            //print("0")
             return 0
         }
     
@@ -100,7 +105,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
         let pictureFile = post["media"] as! PFFile
         let caption = post["caption"] as! String
-        print(post)
+        //print(post)
         let user = post["author"] as! PFUser
         //print(user)
 
@@ -141,7 +146,14 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             
             
         }
+        
+        
+       
 
+       
+
+        //view.addConstraints([newButtonConstraintX,newButtonConstraintY,newButtonConstraintH,newButtonConstraintL])
+        
         cell.post = post
         cell.captionLabel.text = caption
         cell.usernameButton.setTitle(username, forState: .Normal)
@@ -156,6 +168,79 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             }
         
         }
+        var temp = cell.captionLabel
+        var constraints = [] as! [NSLayoutConstraint]
+        ///*
+       // print(post)
+        if let comments = post["comment"] as? [String] {
+            print(comments)
+            for comment in comments {
+                let label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.text = comment
+                cell.addSubview(label)
+                
+                let con = NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: temp, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+                
+                let con1 = NSLayoutConstraint(item: label, attribute: .Top, relatedBy: .Equal, toItem: temp, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
+                
+                let con2 = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 200)
+                
+                let con3 = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 21)
+
+                constraints.append(con)
+                constraints.append(con1)
+                constraints.append(con2)
+                constraints.append(con3)
+                
+                //NSLayoutConstraint.activateConstraints([con])
+                //NSLayoutConstraint.activateConstraints([con, con1, con2, con3])
+                //print("before: \(temp.text)")
+                temp = label
+                //print("after: \(temp.text)")
+                
+            }
+            
+        }
+        let con2 = NSLayoutConstraint(item: temp, attribute: .Bottom, relatedBy: .Equal, toItem: temp.superview, attribute: .Bottom, multiplier: 1.0, constant: -10.0)
+        
+        NSLayoutConstraint.activateConstraints(constraints)
+        NSLayoutConstraint.activateConstraints([con2])
+
+        
+        // */
+        
+       //
+/*
+        var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "I'm a test label"
+        cell.addSubview(label)
+        
+       
+        let con = NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: cell.captionLabel, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        
+        let con1 = NSLayoutConstraint(item: label, attribute: .Top, relatedBy: .Equal, toItem: cell.captionLabel, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
+        
+        var label1 = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label1.translatesAutoresizingMaskIntoConstraints = false
+        label1.text = "I'm a test label"
+        cell.addSubview(label1)
+        
+        
+        let con0 = NSLayoutConstraint(item: label1, attribute: .Leading, relatedBy: .Equal, toItem: label, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        
+        let con10 = NSLayoutConstraint(item: label1, attribute: .Top, relatedBy: .Equal, toItem: label, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
+        
+        let con2 = NSLayoutConstraint(item: label1, attribute: .Bottom, relatedBy: .Equal, toItem: label1.superview, attribute: .Bottom, multiplier: 1.0, constant: -10.0)
+        
+        
+        NSLayoutConstraint.activateConstraints([con, con1, con0, con10])
+        NSLayoutConstraint.activateConstraints([con2])
+       //
+        */
+        
+        
         return cell
     }
     
