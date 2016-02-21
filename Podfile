@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'Insta' do
 	pod 'Parse'
+	pod 'MBProgressHUD'
 end
 

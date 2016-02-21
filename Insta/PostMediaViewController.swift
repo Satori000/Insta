@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class PostMediaViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -98,12 +99,13 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     
     @IBAction func onPost(sender: AnyObject) {
-        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.view.endEditing(true)
          let editedImage = testImageView.image
         let caption = captionField.text
         UserMedia.postUserImage(editedImage, withCaption: caption, withCompletion: { (success: Bool, error: NSError?) -> Void in
             print(success)
-            
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
     }
     

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3FB1AC35DADB92CACB819CF7'
+               BlueprintIdentifier = '4F70906D8631660583252C48'
                BlueprintName = 'Pods-Insta'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Insta.framework'>

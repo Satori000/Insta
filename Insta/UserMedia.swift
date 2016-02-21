@@ -44,6 +44,21 @@ class UserMedia: NSObject {
         media.saveInBackgroundWithBlock(completion)
     }
     
+    class func changeProfileImage(image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
+        // Create Parse object PFObject
+        let user = PFUser.currentUser()!
+        
+        user["profileImage"] = getPFFileFromImage(image)
+        
+        
+        // Add relevant fields to the object
+       // media["media"] = getPFFileFromImage(image) // PFFile column type
+               // Save object (following function will save the object in Parse asynchronously)
+        
+        
+        user.saveInBackgroundWithBlock(completion)
+    }
+    
     
     /**
      Method to post user media to Parse by uploading image file

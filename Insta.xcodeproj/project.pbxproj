@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8135F31C78EF44003EBFB6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8135F21C78EF44003EBFB6 /* ProfileViewController.swift */; };
 		1F9A792D1C7436B300691074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A792C1C7436B300691074 /* AppDelegate.swift */; };
 		1F9A79321C7436B400691074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A79301C7436B400691074 /* Main.storyboard */; };
 		1F9A79341C7436B400691074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A79331C7436B400691074 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F8135F21C78EF44003EBFB6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1F9A79291C7436B300691074 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9A792C1C7436B300691074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9A79311C7436B400691074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		1F9A79461C74FF6300691074 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F8135F21C78EF44003EBFB6 /* ProfileViewController.swift */,
 				1F9A79501C766A4400691074 /* CommentsViewController.swift */,
 				1F9A79441C74FE0700691074 /* PostMediaViewController.swift */,
 				1F9A79401C74E2A200691074 /* InstaFeedViewController.swift */,
@@ -256,6 +259,7 @@
 				1F9A79411C74E2A200691074 /* InstaFeedViewController.swift in Sources */,
 				1F9A792D1C7436B300691074 /* AppDelegate.swift in Sources */,
 				1F9A79431C74E47200691074 /* PostCell.swift in Sources */,
+				1F8135F31C78EF44003EBFB6 /* ProfileViewController.swift in Sources */,
 				1F9A79451C74FE0700691074 /* PostMediaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

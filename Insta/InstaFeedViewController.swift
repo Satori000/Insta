@@ -17,7 +17,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
     var commentPost: PFObject?
     @IBOutlet weak var tableView: UITableView!
     
-    
+    let CellIdentifier = "PostCell", HeaderViewIdentifier = "TableViewHeaderView"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
 
-        
+        //tableView.registerClass(PostCell.self, forCellReuseIdentifier: CellIdentifier)
+        //tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: HeaderViewIdentifier)
         
         
         self.tabBarItem.title = "Feed"
@@ -85,11 +87,11 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         PFUser.logOut()
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let feed = feed {
             //print(self.feed!.count)
             
-            return self.feed!.count
+            return feed.count
             
         } else {
             //print("0")
@@ -99,7 +101,40 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    /////////////////////////////////////////
+   /* func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if let feed = feed {
+            print(self.feed!.count)
+            
+            return feed.count
+            
+        } else {
+            //print("0")
+            return 0
+        }
+
+    }
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print("1")
+        return 1
+    }
+
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier)! as UITableViewHeaderFooterView
+        
+        print("hello")
+        //header.textLabel!.text = "hello"
+        return header
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        //print("30")
+        return 30
+    } */
+    
+    ///////////////////////////////////////////
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! PostCell
         
         let post = self.feed![indexPath.row]
@@ -109,7 +144,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         //print(post)
         let user = post["author"] as! PFUser
         //print(user)
-
+        
         let username = user.username!
         let date = post["time"] as! NSDate
         //print(date)
@@ -169,8 +204,29 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             }
         
         }
+        if let profilePictureFile = user["profileImage"]
+        {
+            profilePictureFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data:imageData)
+                        cell.profileImageView.image = image
+                    }
+                }
+                
+            }
+
+            
+            
+            
+        } else {
+            cell.profileImageView.image = nil
+            
+        }
         
         
+        //cell.profileImageView.image = image
         
         
         
@@ -178,10 +234,36 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
         //var temp = cell.captionLabel
        // var constraints = [] as! [NSLayoutConstraint]
-       
+       /*
+        var container: UIView?
         
+        if let container1 = container {
+            container1.removeFromSuperview()
+        }
+    
         
-        let container = UIView()
+        container = UIView()
+        container!.backgroundColor = UIColor.blackColor()
+        container!.translatesAutoresizingMaskIntoConstraints = false
+        //cell.translatesAutoresizingMaskIntoConstraints = false
+        cell.addSubview(container!)
+        let viewW = NSLayoutConstraint(item: container!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 200)
+        
+        let viewH = NSLayoutConstraint(item: container!, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 21)
+        
+        let viewTrailing = NSLayoutConstraint(item: container!, attribute: .Trailing, relatedBy: .Equal, toItem: container!.superview, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let viewLeading = NSLayoutConstraint(item: container!, attribute: .Leading, relatedBy: .Equal, toItem: container!.superview, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let viewTop = NSLayoutConstraint(item: container!, attribute: .Top, relatedBy: .Equal, toItem: cell.captionLabel, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
+        let viewBottom = NSLayoutConstraint(item: container!, attribute: .Bottom, relatedBy: .Equal, toItem: container!.superview, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
+        NSLayoutConstraint.activateConstraints([viewH,viewLeading, viewTrailing, viewTop])
+
+    
+    */
+        
+    
+    
+    
+     /*   let container = UIView()
         container.backgroundColor = UIColor.blackColor()
         container.translatesAutoresizingMaskIntoConstraints = false
         //cell.translatesAutoresizingMaskIntoConstraints = false
@@ -197,7 +279,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         NSLayoutConstraint.activateConstraints([viewH,viewLeading, viewTrailing, viewTop])
         
 
-        
+        */
         
         // 
         /*
@@ -352,7 +434,19 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             //print(media)
             commentVC.media = media!
             
+        } else {
+            let profileVC = segue.destinationViewController as! ProfileViewController
+            let cell = sender!.superview!!.superview! as! PostCell
+            
+            let user = cell.post!["author"] as! PFUser
+            //print(media)
+            profileVC.user = user
+            
+            
+            
         }
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
