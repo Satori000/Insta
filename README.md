@@ -30,6 +30,10 @@ The following **additional** features are implemented:
 - [x] tab for profile view
 - [x] keeps track of number of posts
 - [x] can take pictures and post (don't know if that counts)
+- [x] navigation bar at the top is clear
+- [x] username displayed at top of profile view
+- [x] keeps track of how many posts the user has on profile
+- [x] timestamp keeps track of time elapsed rather than creation time (sorry i had to modify the optional so idk if this counts)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
