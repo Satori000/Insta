@@ -40,7 +40,9 @@ class UserMedia: NSObject {
         let data = str.dataUsingEncoding(NSUTF8StringEncoding)
         let file = PFFile(name:"resume.txt", data:data!)
         
-        
+        let user = PFUser.currentUser()
+        user!["postsCount"] = user!["postsCount"] as! Int + 1
+        user?.saveInBackground()
         media.saveInBackgroundWithBlock(completion)
     }
     
@@ -59,6 +61,49 @@ class UserMedia: NSObject {
         user.saveInBackgroundWithBlock(completion)
     }
     
+    class func getPictureFromFile(file: PFFile?) -> UIImage {
+        var image: UIImage?
+        file!.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    image = UIImage(data:imageData)
+                }
+            }
+            
+        }
+
+        
+        
+        return image!
+    }
+    
+    class func likePicture(picture: PFObject?) {
+        if let likeCount = picture!["likesCount"] as? Int{
+            let newLikeCount = likeCount + 1
+            
+            picture!["likesCount"] = newLikeCount
+            picture!.saveInBackground()
+            
+        } else {
+            
+            picture!["likesCount"] = 1
+            picture!.saveInBackground()
+        }
+        
+        
+        
+    }
+    
+    class func unLikePicture(picture: PFObject?) {
+        if let likeCount = picture!["likesCount"] as? Int{
+            let newLikeCount = likeCount - 1
+            
+            picture!["likesCount"] = newLikeCount
+            picture!.saveInBackground()
+            
+        }
+    }
     
     /**
      Method to post user media to Parse by uploading image file

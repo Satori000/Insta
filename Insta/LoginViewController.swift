@@ -56,6 +56,16 @@ class LoginViewController: UIViewController {
                 print("hey created a user")
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
                 
+                newUser["postsCount"] = 0
+                newUser["followersCount"] = 0
+                newUser["followingCount"] = 0
+                
+                newUser["followers"] = [] as! [PFUser]
+                
+                newUser["following"] = [] as! [PFUser]
+                
+                
+                newUser.saveInBackground()
                 
             } else {
                 

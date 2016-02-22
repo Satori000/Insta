@@ -13,6 +13,9 @@ class PostCell: UITableViewCell {
     
     @IBOutlet weak var usernameButton: UIButton!
     
+    
+    @IBOutlet weak var usernameLabel2: UIButton!
+    
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var timestampLabel: UILabel!
@@ -26,6 +29,9 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBOutlet weak var container: UIView!
+    
+    @IBOutlet weak var likeCountLabel: UILabel!
+    
     
     var post: PFObject?
     
@@ -47,8 +53,6 @@ class PostCell: UITableViewCell {
     @IBAction func onComment(sender: AnyObject) {
         
         if let object = post {
-            
-            
             let id = object["id"] as! String
             var query = PFQuery(className:"UserMedia")
             query.getObjectInBackgroundWithId("id") {
@@ -60,12 +64,14 @@ class PostCell: UITableViewCell {
                     media.saveInBackground()
                 }
             }
-            
         }
+    }
+    
+    @IBAction func onLike(sender: AnyObject) {
+        UserMedia.likePicture(post)
         
-        
-        
-        
+     let newLikesCount = post!["likesCount"] as! Int
+    self.likeCountLabel.text = "\(newLikesCount)"
         
     }
     

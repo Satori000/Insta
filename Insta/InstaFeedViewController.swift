@@ -14,6 +14,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
     
     var feed: [PFObject]?
     
+    var refreshControl: UIRefreshControl?
+    
     var commentPost: PFObject?
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,7 +28,8 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
-
+        self.refreshControl = UIRefreshControl()
+        
         //tableView.registerClass(PostCell.self, forCellReuseIdentifier: CellIdentifier)
         //tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: HeaderViewIdentifier)
         
@@ -39,6 +42,9 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         query.orderByDescending("createdAt")
         query.includeKey("author")
         query.limit = 20
+        
+        self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl!)
         
         // fetch data asynchronously
         query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
@@ -54,6 +60,28 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             
         }
         
+    }
+    
+     func refresh(sender: AnyObject) {
+        let query = PFQuery(className: "UserMedia")
+        query.orderByDescending("createdAt")
+        query.includeKey("author")
+        query.limit = 20
+
+        query.findObjectsInBackgroundWithBlock { (media: [PFObject]?, error: NSError?) -> Void in
+            if let media = media {
+                
+                self.feed = media
+                self.tableView.reloadData()
+                //print(self.feed!)
+                // do something with the data fetched
+                self.refreshControl?.endRefreshing()
+            } else {
+                self.refreshControl?.endRefreshing()
+                // handle error
+            }
+            
+        }
     }
 
   /*  override func viewDidAppear(animated: Bool) {
@@ -148,7 +176,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         let username = user.username!
         let date = post["time"] as! NSDate
         //print(date)
-        
+        let likeCount = post["likesCount"]
         let timeElapsed = Int(0 - date.timeIntervalSinceNow)
         //print(timeElapsed)
         
@@ -192,7 +220,9 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
         
         cell.post = post
         cell.captionLabel.text = caption
+        cell.likeCountLabel.text = String(likeCount)
         cell.usernameButton.setTitle(username, forState: .Normal)
+        cell.usernameLabel2.setTitle(username,forState: .Normal)
         cell.timestampLabel.text = timeElapsedString
         pictureFile.getDataInBackgroundWithBlock {
             (imageData: NSData?, error: NSError?) -> Void in
@@ -434,7 +464,7 @@ class InstaFeedViewController: UIViewController, UITableViewDataSource, UITableV
             //print(media)
             commentVC.media = media!
             
-        } else {
+        } else if segue.identifier != "SignOut" {
             let profileVC = segue.destinationViewController as! ProfileViewController
             let cell = sender!.superview!!.superview! as! PostCell
             

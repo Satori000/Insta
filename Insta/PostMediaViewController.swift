@@ -38,7 +38,7 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func onTakePicture(sender: AnyObject) {
         
-        vc.sourceType = UIImagePickerControllerSourceType.Camera
+       // vc.sourceType = UIImagePickerControllerSourceType.Camera
         
         self.presentViewController(vc, animated: true, completion: nil)
     }
@@ -92,7 +92,7 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func onLibrary(sender: AnyObject) {
 
-        vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+       // vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         
         self.presentViewController(vc, animated: true, completion: nil)
     }
@@ -107,6 +107,7 @@ class PostMediaViewController: UIViewController, UINavigationControllerDelegate,
             print(success)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         })
+        
     }
     
     
