@@ -2,7 +2,7 @@
 
 **Insta** is a photo sharing app using Parse as its backend.
 
-Time spent: **8** hours spent in total
+Time spent: **30+** hours spent in total
 
 ## User Stories
 
@@ -17,18 +17,24 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] Show the username and creation time for each post
-- [ ] When the user is uploading a photo, show a progress indicator to show how much of the photo has been uploaded
-- [ ] User can connect his or her Facebook account
-- [ ] User can comment on a post and see all comments for each post
+- [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
+- [x] User Profiles:
+   - [x] Allow the logged in user to add a profile photo
+   - [x] Display the profile photo with each post
+   - [x] Tapping on a post's username or profile photo goes to that user's profile page
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Ability to like a post 
+- [x] collection view of user's own photos on profile page
+- [x] tab for profile view
+- [x] keeps track of number of posts
+- [x] can take pictures and post (don't know if that counts)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. how to implement infinite scrolling/updating new posts once pulled from bottom of list of posts
-2. 
+1. infinite scrolling
+2. how to add constraints programmatically (spent about half the time trying to do that)
 
 ## Video Walkthrough 
 
@@ -40,7 +46,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I spent almost half the time trying to figure out constraints programmatically to add to the old comments optional user story and could not figure it out that's why i took so long 
+
 
 ## License
 
